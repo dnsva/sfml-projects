@@ -13,6 +13,11 @@ FetchContent_MakeAvailable(SFML)
 add_executable(spiral src/ulam_spiral/main.cpp)
 add_executable(triangle src/sierpinski_triangle/main.cpp)
 add_executable(conway src/conway/main.cpp)
+add_executable(graphs src/graphs/main.cpp)
+
+target_compile_definitions(conway PRIVATE
+    FONT_PATH="${CMAKE_SOURCE_DIR}/src/conway/arial.ttf"
+)
 
 #target_link_libraries(main PRIVATE sfml-graphics)
 #target_compile_features(main PRIVATE cxx_std_17)
@@ -25,6 +30,9 @@ target_compile_features(triangle PRIVATE cxx_std_17)
 
 target_link_libraries(conway PRIVATE sfml-graphics)
 target_compile_features(conway PRIVATE cxx_std_17)
+
+target_link_libraries(graphs PRIVATE sfml-graphics)
+target_compile_features(graphs PRIVATE cxx_std_17)
 
 if(WIN32)
     add_custom_command(

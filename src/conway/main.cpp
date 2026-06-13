@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <vector>
+#include <iostream>
 
 using std::vector;
 
@@ -24,7 +25,9 @@ void update_grid(vector<vector<bool>>& gen_a, vector<vector<bool>>& gen_b, int& 
 
 void setup(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<bool>> &gen_b, int& c, int& r, int & generation, int & population) {
     sf::Font font;
-    font.loadFromFile("src/fonts/arial.ttf");
+   // font.loadFromFile("src/conway/arial.ttf"); 
+   font.loadFromFile(FONT_PATH);
+
     font.setSmooth( !font.isSmooth() );
     bool isMousePressed = false;
     int max_x = window.getSize().x, max_y = window.getSize().y;
@@ -130,7 +133,8 @@ void setup(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<
 void run_animation(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<bool>> &gen_b, int c, int r, int &generation, int &population) {
     
     sf::Font font;
-    font.loadFromFile("src/conway/arial.ttf");
+    //font.loadFromFile("src/conway/arial.ttf");
+    font.loadFromFile(FONT_PATH);
     font.setSmooth( !font.isSmooth() );
 
     sf::Text text_generation, text_population;
