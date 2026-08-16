@@ -2,11 +2,13 @@
 #include <SFML/Graphics/Font.hpp>
 #include <functional>
 
+#include "font.h"
+
 using std::string;
 
 struct button {
 
-    sf::Font font;
+    sf::Font& font = annas_library::get_default_font();
 
     string text; //the string in the button
     sf::Text curr_text;
@@ -19,9 +21,6 @@ struct button {
     int x_pos, y_pos, width, height;
 
     button(string text_, int x_pos_, int y_pos_, int width_, int height_) : text(text_), x_pos(x_pos_), y_pos(y_pos_), width(width_), height(height_){
-
-        font.loadFromFile("src/fonts/arial.ttf");
-        font.setSmooth( !font.isSmooth() );
 
         curr_text.setFillColor(text_color);
         curr_text.setFont(font);

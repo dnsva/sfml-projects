@@ -5,6 +5,8 @@
 #include <utility>
 #include <iostream>
 
+#include "annas_library/font.h"
+
 using namespace std;
 
 //Compile:
@@ -703,8 +705,7 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(800,800), "Graphs");
 
     vector<node> nodes; //important
-    sf::Font font;
-    font.loadFromFile("src/fonts/arial.ttf");
+    sf::Font& font = annas_library::get_default_font();
 
 
     //testing rotation to figure out how to draw arrows

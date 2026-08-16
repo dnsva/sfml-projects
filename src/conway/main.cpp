@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+#include "annas_library/font.h"
+
 using std::vector;
 
 //Compile:
@@ -24,11 +26,7 @@ void update_grid(vector<vector<bool>>& gen_a, vector<vector<bool>>& gen_b, int& 
 /************************************************************/
 
 void setup(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<bool>> &gen_b, int& c, int& r, int & generation, int & population) {
-    sf::Font font;
-   // font.loadFromFile("src/conway/arial.ttf"); 
-   font.loadFromFile(FONT_PATH);
-
-    font.setSmooth( !font.isSmooth() );
+    sf::Font& font = annas_library::get_default_font();
     bool isMousePressed = false;
     int max_x = window.getSize().x, max_y = window.getSize().y;
     resize_clear_grid(gen_a, gen_b, c, r);
@@ -132,10 +130,7 @@ void setup(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<
 
 void run_animation(sf::RenderWindow& window, vector<vector<bool>> &gen_a, vector<vector<bool>> &gen_b, int c, int r, int &generation, int &population) {
     
-    sf::Font font;
-    //font.loadFromFile("src/conway/arial.ttf");
-    font.loadFromFile(FONT_PATH);
-    font.setSmooth( !font.isSmooth() );
+    sf::Font& font = annas_library::get_default_font();
 
     sf::Text text_generation, text_population;
     text_generation.setFont(font);

@@ -1,11 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
 
+#include "font.h"
+
 using std::string;
 
 struct textfield {
 
-    sf::Font font;
+    sf::Font& font = annas_library::get_default_font();
 
     string curr_string; //current string in the box 
     sf::Text curr_text;
@@ -19,9 +21,6 @@ struct textfield {
 
     
     textfield(int x_pos_, int y_pos_, int width_, int height_) : x_pos(x_pos_), y_pos(y_pos_), width(width_), height(height_){
-
-        font.loadFromFile("src/fonts/arial.ttf");
-        font.setSmooth( !font.isSmooth() );
 
         curr_text.setFillColor(text_color);
         curr_text.setFont(font);
