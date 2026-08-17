@@ -37,6 +37,15 @@ target_compile_features(graphs PRIVATE cxx_std_17)
 target_link_libraries(widgets PRIVATE sfml-graphics)
 target_compile_features(widgets PRIVATE cxx_std_17)
 
+# <cmath> includes thru Clang/libc++ but linux needs it actually included
+# i just dont want to edit the other files so im editing it here
+foreach(target spiral triangle graphs)
+    target_compile_options(${target} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/FIcmath>
+        $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-include cmath>
+    )
+endforeach()
+
 if(WIN32)
     foreach(target spiral triangle conway graphs widgets)
         add_custom_command(
