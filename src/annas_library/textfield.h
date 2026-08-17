@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <functional>
 
 #include "font.h"
 
